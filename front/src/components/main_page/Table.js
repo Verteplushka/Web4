@@ -16,7 +16,7 @@ const Table = ({ dotsList }) => {
       </thead>
       <tbody>
         {dotsList.map((dot, index) => (
-          <tr>
+          <tr key={index}>
             <th scope="row">{index + 1}</th>
             <td>{dot.x}</td>
             <td>{dot.y}</td>
