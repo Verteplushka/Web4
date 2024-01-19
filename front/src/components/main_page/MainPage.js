@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Table from "./Table";
 import { listDots } from "../../service/DotService";
+import Form from "./Form";
 
 const MainPage = () => {
   const [dotsList, setDotsList] = useState([]);
@@ -16,6 +17,9 @@ const MainPage = () => {
 
   return (
     <>
+      <div className="container">
+        <Form />
+      </div>
       <div className="container">
         <Table dotsList={dotsList} />
       </div>
