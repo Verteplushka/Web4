@@ -1,42 +1,29 @@
 ### Frontend ###
-front/target/
-!front/.mvn/wrapper/maven-wrapper.jar
-!front/**/src/main/**/target/
-!front/**/src/test/**/target/
+# Logs
+front/logs
+front/*.log
+front/npm-debug.log*
+front/yarn-debug.log*
+front/yarn-error.log*
+front/pnpm-debug.log*
+front/lerna-debug.log*
 
-### IntelliJ IDEA ###
-front/.idea/modules.xml
-front/.idea/jarRepositories.xml
-front/.idea/compiler.xml
-front/.idea/libraries/
-front/*.iws
-front/*.iml
-front/*.ipr
+front/node_modules
+front/dist
+front/dist-ssr
+front/*.local
 
-### Eclipse ###
-front/.apt_generated
-front/.classpath
-front/.factorypath
-front/.project
-front/.settings
-front/.springBeans
-front/.sts4-cache
-
-### NetBeans ###
-front/nbproject/private/
-front/nbbuild/
-front/dist/
-front/nbdist/
-front/.nb-gradle/
-front/build/
-!front/**/src/main/**/build/
-!front/**/src/test/**/build/
-
-### VS Code ###
-front/.vscode/
-
-### Mac OS ###
+# Editor directories and files
+front/.vscode/*
+!front/.vscode/extensions.json
+front/.idea
 front/.DS_Store
+front/*.suo
+front/*.ntvs*
+front/*.njsproj
+front/*.sln
+front/*.sw?
+
 
 ### Backend ###
 backend/target/
@@ -45,10 +32,8 @@ backend/target/
 !backend/**/src/test/**/target/
 
 ### IntelliJ IDEA ###
-backend/.idea/modules.xml
-backend/.idea/jarRepositories.xml
-backend/.idea/compiler.xml
-backend/.idea/libraries/
+backend/.idea/
+backend/HELP.md
 backend/*.iws
 backend/*.iml
 backend/*.ipr
@@ -77,4 +62,6 @@ backend/.vscode/
 
 ### Mac OS ###
 backend/.DS_Store
+
+
 *.txt 
