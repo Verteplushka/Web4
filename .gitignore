@@ -77,3 +77,4 @@ backend/.vscode/
 
 ### Mac OS ###
 backend/.DS_Store
+*.txt 
