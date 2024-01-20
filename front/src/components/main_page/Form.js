@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import IconButton from "@mui/material/IconButton";
-import { clear, addDot, listDots } from "../../service/DotService";
+import { clear, addDot } from "../../service/DotService";
 
 const Form = () => {
   const [x, setX] = useState(0);
@@ -14,13 +14,6 @@ const Form = () => {
 
   const clearList = () => {
     clear();
-    listDots()
-      .then((response) => {
-        setDotsList(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   };
 
   const check = () => {
