@@ -16,7 +16,20 @@ const Form = () => {
     setPassword(event.target.value);
   };
 
+  const checkForm = () => {
+    if (login === "") {
+      alert("Login mustn't be empty");
+      return false;
+    }
+    if (password === "") {
+      alert("Password mustn't be empty");
+      return false;
+    }
+    return true;
+  };
+
   const singUp = () => {
+    if (!checkForm()) return;
     addUser({ login: login, password: password }).then((response) =>
       response.data
         ? navigator("/main_page")
@@ -25,6 +38,7 @@ const Form = () => {
   };
 
   const logIn = () => {
+    if (!checkForm()) return;
     checkUser({ login: login, password: password }).then((response) =>
       response.data
         ? navigator("/main_page")
