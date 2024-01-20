@@ -8,8 +8,7 @@ const Form = () => {
   const [r, setR] = useState(0);
 
   const handleInputY = (event) => {
-    const newY = event.target.value;
-    setY(newY);
+    setY(event.target.value);
   };
 
   const clearList = () => {
@@ -115,6 +114,7 @@ const Form = () => {
           id="y"
           className="form-control"
           placeholder="Y must be in (-5, 3)"
+          maxLength={17}
           value={y}
           onChange={handleInputY}
         />

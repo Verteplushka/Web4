@@ -22,21 +22,10 @@ public class DotController {
         return new ResponseEntity<>(savedDot, HttpStatus.CREATED);
     }
 
-    @GetMapping("{id}")
-    public ResponseEntity<DotDto> getDotById(@PathVariable Long id){
-        DotDto foundDot = dotService.getDotById(id);
-        return ResponseEntity.ok(foundDot);
-    }
-
     @GetMapping
     public ResponseEntity<List<DotDto>> getAllDots(){
         List<DotDto> allDots = dotService.getAllDots();
         return ResponseEntity.ok(allDots);
-    }
-
-    @DeleteMapping("{id}")
-    public void deleteDotById(@PathVariable Long id){
-        dotService.deleteDotById(id);
     }
 
     @DeleteMapping

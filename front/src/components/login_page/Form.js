@@ -40,9 +40,7 @@ const Form = () => {
   const logIn = () => {
     if (!checkForm()) return;
     checkUser({ login: login, password: password }).then((response) =>
-      response.data
-        ? navigator("/main_page")
-        : alert("Invalid login or password")
+      response.data ? navigator("/main_page") : alert("Wrong login or password")
     );
   };
 
