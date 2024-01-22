@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import { clear, addDot } from "../../service/DotService";
+import { addDotRedux, clearRedux } from "../../redux/actions";
+import { useDispatch } from "react-redux";
 
 const Form = () => {
+  const dispatch = useDispatch();
+
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
   const [r, setR] = useState(0);
@@ -12,7 +16,7 @@ const Form = () => {
   };
 
   const clearList = () => {
-    clear();
+    clear().then(dispatch(clearRedux()));
   };
 
   const check = () => {
@@ -34,7 +38,7 @@ const Form = () => {
     }
 
     addDot({ x: x, y: y, r: r }).then((response) => {
-      console.log(response.data);
+      dispatch(addDotRedux(response.data));
     });
   };
 
