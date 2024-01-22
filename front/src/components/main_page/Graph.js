@@ -7,6 +7,7 @@ const Graph = () => {
   const dispatch = useDispatch();
   const canvasRef = useRef(null);
   const r = useSelector((state) => state.r);
+  const dotsList = useSelector((state) => state.dotsList);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -96,11 +97,28 @@ const Graph = () => {
     ctx.closePath(); // Завершить четверть круга
     ctx.fill();
 
+    if (r > 0) {
+      dotsList.forEach((dot) => {
+        ctx.fillStyle =
+          dot.result === "hit"
+            ? "rgba(0, 255, 0, 0.5)"
+            : "rgba(255, 0, 0, 0.5)";
+        ctx.fillRect(
+          canvas.width / 2 + (dot.x / dot.r) * r * unitLenght,
+          canvas.height / 2 - (dot.y / dot.r) * r * unitLenght,
+          3,
+          3
+        );
+      });
+    }
+
     // Очистим canvas при размонтировании компонента
     return () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     };
-  }, [r]);
+  }, [r, dotsList]);
+
+  useEffect(() => {}, [dotsList]);
 
   const checkDotMouse = (event) => {
     const canvas = event.target;
