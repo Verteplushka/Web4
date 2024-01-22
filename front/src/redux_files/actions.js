@@ -6,3 +6,8 @@ export const addDotRedux = (dot) => ({
 export const clearRedux = () => ({
   type: "CLEAR",
 });
+
+export const changeR = (r) => ({
+  type: "CHANGE_R",
+  payload: r,
+});

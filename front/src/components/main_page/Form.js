@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import { clear, addDot } from "../../service/DotService";
-import { addDotRedux, clearRedux } from "../../redux_files/actions";
+import { addDotRedux, changeR, clearRedux } from "../../redux_files/actions";
 import { useDispatch } from "react-redux";
 
 const Form = () => {
@@ -10,6 +10,11 @@ const Form = () => {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
   const [r, setR] = useState(0);
+
+  const globalSetR = (r) => {
+    setR(r);
+    if (r > 0) dispatch(changeR(r));
+  };
 
   const handleInputY = (event) => {
     setY(event.target.value);
@@ -129,63 +134,63 @@ const Form = () => {
         <IconButton
           size="small"
           color={r === -5 ? "warning" : "primary"}
-          onClick={() => setR(-5)}
+          onClick={() => globalSetR(-5)}
         >
           -5
         </IconButton>
         <IconButton
           size="small"
           color={r === -4 ? "warning" : "primary"}
-          onClick={() => setR(-4)}
+          onClick={() => globalSetR(-4)}
         >
           -4
         </IconButton>
         <IconButton
           size="small"
           color={r === -3 ? "warning" : "primary"}
-          onClick={() => setR(-3)}
+          onClick={() => globalSetR(-3)}
         >
           -3
         </IconButton>
         <IconButton
           size="small"
           color={r === -2 ? "warning" : "primary"}
-          onClick={() => setR(-2)}
+          onClick={() => globalSetR(-2)}
         >
           -2
         </IconButton>
         <IconButton
           size="small"
           color={r === -1 ? "warning" : "primary"}
-          onClick={() => setR(-1)}
+          onClick={() => globalSetR(-1)}
         >
           -1
         </IconButton>
         <IconButton
           size="small"
           color={r === 0 ? "warning" : "primary"}
-          onClick={() => setR(0)}
+          onClick={() => globalSetR(0)}
         >
           0
         </IconButton>
         <IconButton
           size="small"
           color={r === 1 ? "warning" : "primary"}
-          onClick={() => setR(1)}
+          onClick={() => globalSetR(1)}
         >
           1
         </IconButton>
         <IconButton
           size="small"
           color={r === 2 ? "warning" : "primary"}
-          onClick={() => setR(2)}
+          onClick={() => globalSetR(2)}
         >
           2
         </IconButton>
         <IconButton
           size="small"
           color={r === 3 ? "warning" : "primary"}
-          onClick={() => setR(3)}
+          onClick={() => globalSetR(3)}
         >
           3
         </IconButton>
