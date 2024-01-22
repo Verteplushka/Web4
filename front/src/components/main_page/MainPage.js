@@ -8,7 +8,6 @@ import { addDotRedux } from "../../redux_files/actions";
 
 const MainPage = () => {
   const dotsList = useSelector((state) => state.dotsList);
-  const r = useSelector((state) => state.r);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,7 +27,7 @@ const MainPage = () => {
       </div>
 
       <div className="container">
-        <Graph r={r} />
+        <Graph />
       </div>
 
       <div className="container">

@@ -13,7 +13,11 @@ const Form = () => {
 
   const globalSetR = (r) => {
     setR(r);
-    if (r > 0) dispatch(changeR(r));
+    if (r > 0) {
+      dispatch(changeR(r));
+    } else {
+      dispatch(changeR(0));
+    }
   };
 
   const handleInputY = (event) => {

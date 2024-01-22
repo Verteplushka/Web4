@@ -1,7 +1,10 @@
 import React, { useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addDot } from "../../service/DotService";
+import { addDotRedux } from "../../redux_files/actions";
 
 const Graph = () => {
+  const dispatch = useDispatch();
   const canvasRef = useRef(null);
   const r = useSelector((state) => state.r);
 
@@ -9,7 +12,9 @@ const Graph = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    let scaledR = r * 20;
+    const unitLenght = (canvas.height - 60) / 8;
+
+    let scaledR = r * unitLenght;
 
     // Рисование оси X с стрелкой на конце
     ctx.beginPath();
@@ -26,7 +31,7 @@ const Graph = () => {
     ctx.fill();
 
     // Рисование делений на оси X
-    for (let x = 30; x < canvas.width - 30; x += 20) {
+    for (let x = 30; x < canvas.width - 30; x += unitLenght) {
       ctx.moveTo(x, canvas.height / 2 - 3);
       ctx.lineTo(x, canvas.height / 2 + 3);
       ctx.stroke();
@@ -47,7 +52,7 @@ const Graph = () => {
     ctx.fill();
 
     // Рисование делений на оси Y
-    for (let y = 30; y < canvas.height - 30; y += 20) {
+    for (let y = 30; y < canvas.height - 30; y += unitLenght) {
       ctx.moveTo(canvas.width / 2 - 3, y);
       ctx.lineTo(canvas.width / 2 + 3, y);
       ctx.stroke();
@@ -95,9 +100,24 @@ const Graph = () => {
     return () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     };
-  }, [r]); // Пустой массив зависимостей, чтобы эффект выполнился только после монтирования
+  }, [r]);
 
-  return <canvas ref={canvasRef} width={300} height={300} />;
+  const checkDotMouse = (event) => {
+    const canvas = event.target;
+    const rect = canvas.getBoundingClientRect();
+    const unitLenght = (canvas.height - 60) / 8;
+
+    const x = (event.clientX - rect.left - canvas.width / 2) / unitLenght;
+    const y = (canvas.height / 2 - (event.clientY - rect.top)) / unitLenght;
+
+    addDot({ x: x, y: y, r: r }).then((response) =>
+      dispatch(addDotRedux(response.data))
+    );
+  };
+
+  return (
+    <canvas ref={canvasRef} width={320} height={320} onClick={checkDotMouse} />
+  );
 };
 
 export default Graph;
