@@ -13,7 +13,7 @@ const Graph = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    const unitLenght = (canvas.height - 60) / 8;
+    const unitLenght = (canvas.height - 60) / 10;
 
     let scaledR = r * unitLenght;
 
@@ -32,7 +32,7 @@ const Graph = () => {
     ctx.fill();
 
     // Рисование делений на оси X
-    for (let x = 30; x < canvas.width - 30; x += unitLenght) {
+    for (let x = 30; x <= canvas.width - 30; x += unitLenght) {
       ctx.moveTo(x, canvas.height / 2 - 3);
       ctx.lineTo(x, canvas.height / 2 + 3);
       ctx.stroke();
@@ -53,7 +53,7 @@ const Graph = () => {
     ctx.fill();
 
     // Рисование делений на оси Y
-    for (let y = 30; y < canvas.height - 30; y += unitLenght) {
+    for (let y = 30; y <= canvas.height - 30; y += unitLenght) {
       ctx.moveTo(canvas.width / 2 - 3, y);
       ctx.lineTo(canvas.width / 2 + 3, y);
       ctx.stroke();
@@ -97,17 +97,15 @@ const Graph = () => {
     ctx.closePath(); // Завершить четверть круга
     ctx.fill();
 
+    //Точки 0_0
     if (r > 0) {
       dotsList.forEach((dot) => {
-        ctx.fillStyle =
-          dot.result === "hit"
-            ? "rgba(0, 255, 0, 0.5)"
-            : "rgba(255, 0, 0, 0.5)";
+        ctx.fillStyle = dot.result === "hit" ? "green" : "red";
         ctx.fillRect(
           canvas.width / 2 + (dot.x / dot.r) * r * unitLenght,
           canvas.height / 2 - (dot.y / dot.r) * r * unitLenght,
-          3,
-          3
+          2,
+          2
         );
       });
     }
@@ -123,10 +121,23 @@ const Graph = () => {
   const checkDotMouse = (event) => {
     const canvas = event.target;
     const rect = canvas.getBoundingClientRect();
-    const unitLenght = (canvas.height - 60) / 8;
+    const unitLenght = (canvas.height - 60) / 10;
 
     const x = (event.clientX - rect.left - canvas.width / 2) / unitLenght;
     const y = (canvas.height / 2 - (event.clientY - rect.top)) / unitLenght;
+
+    if (r <= 0) {
+      alert("You chose invalid R");
+      return;
+    }
+    if (x < -5 || x > 3) {
+      alert("X must be in [-5, 3]");
+      return;
+    }
+    if (y <= -5 || y >= 3) {
+      alert("Y must be in (-5, 3)");
+      return;
+    }
 
     addDot({ x: x, y: y, r: r }).then((response) =>
       dispatch(addDotRedux(response.data))
@@ -134,7 +145,7 @@ const Graph = () => {
   };
 
   return (
-    <canvas ref={canvasRef} width={320} height={320} onClick={checkDotMouse} />
+    <canvas ref={canvasRef} width={300} height={300} onClick={checkDotMouse} />
   );
 };
 
