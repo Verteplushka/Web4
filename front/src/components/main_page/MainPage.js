@@ -4,7 +4,7 @@ import { listDots } from "../../service/DotService";
 import Form from "./Form";
 import Graph from "./Graph";
 import { useSelector, useDispatch } from "react-redux";
-import { addDotRedux } from "../../redux/actions";
+import { addDotRedux } from "../../redux_files/actions";
 
 const MainPage = () => {
   const dotsList = useSelector((state) => state.dotsList);

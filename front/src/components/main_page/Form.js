@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import { clear, addDot } from "../../service/DotService";
-import { addDotRedux, clearRedux } from "../../redux/actions";
+import { addDotRedux, clearRedux } from "../../redux_files/actions";
 import { useDispatch } from "react-redux";
 
 const Form = () => {
