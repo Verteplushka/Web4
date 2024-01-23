@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { addUser, checkUser } from "../../service/UserService";
 import { useNavigate } from "react-router-dom";
+import { Toaster, toast } from "sonner";
 
 const Form = () => {
   const navigator = useNavigate();
@@ -18,11 +19,11 @@ const Form = () => {
 
   const checkForm = () => {
     if (login === "") {
-      alert("Login mustn't be empty");
+      toast.error("Username mustn't be empty");
       return false;
     }
     if (password === "") {
-      alert("Password mustn't be empty");
+      toast.error("Password mustn't be empty");
       return false;
     }
     return true;
@@ -33,49 +34,82 @@ const Form = () => {
     addUser({ login: login, password: password }).then((response) =>
       response.data
         ? navigator("/main_page")
-        : alert("User with login " + login + " already exists")
+        : toast.error("User with login " + login + " already exists")
     );
   };
 
   const logIn = () => {
     if (!checkForm()) return;
     checkUser({ login: login, password: password }).then((response) =>
-      response.data ? navigator("/main_page") : alert("Wrong login or password")
+      response.data
+        ? navigator("/main_page")
+        : toast.error("Wrong login or password")
     );
   };
 
   return (
-    <form>
-      <div className="form-group">
-        <label htmlFor="login">Login</label>
-        <input
-          type="text"
-          className="form-control"
-          id="login"
-          placeholder="enter your login here"
-          value={login}
-          onChange={handleLogin}
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          className="form-control"
-          id="password"
-          placeholder="enter your password here"
-          value={password}
-          onChange={handlePassword}
-        />
-      </div>
+    <>
+      <br /> <br />
+      <div className="row">
+        <div className="card col-md-6 offset-md-3 offset-md-3">
+          <br />
+          <h2 className="text-center">Sign in or Log in</h2>
+          <div className="card=body">
+            <form>
+              <div className="form-group ">
+                <label className="form-label" htmlFor="login">
+                  Username
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="login"
+                  placeholder="enter your login here"
+                  value={login}
+                  onChange={handleLogin}
+                />
+              </div>
+              <div className="form-group">
+                <label className="form-label" htmlFor="password">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="password"
+                  placeholder="enter your password here"
+                  value={password}
+                  onChange={handlePassword}
+                />
+              </div>
 
-      <button type="button" className="btn btn-primary" onClick={singUp}>
-        Sign up
-      </button>
-      <button type="button" className="btn btn-primary" onClick={logIn}>
-        Log in
-      </button>
-    </form>
+              <br />
+
+              <div className="d-flex">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={singUp}
+                  style={{ marginRight: "8px" }}
+                >
+                  Sign up
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={logIn}
+                >
+                  Log in
+                </button>
+              </div>
+
+              <br />
+            </form>
+          </div>
+        </div>
+      </div>
+      <Toaster richColors />
+    </>
   );
 };
 

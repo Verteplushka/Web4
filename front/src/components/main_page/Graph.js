@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addDot } from "../../service/DotService";
 import { addDotRedux } from "../../redux_files/actions";
+import { Toaster, toast } from "sonner";
 
 const Graph = () => {
   const dispatch = useDispatch();
@@ -128,15 +129,15 @@ const Graph = () => {
     const y = (canvas.height / 2 - (event.clientY - rect.top)) / unitLenght;
 
     if (r <= 0) {
-      alert("You chose invalid R");
+      toast.error("You chose invalid R");
       return;
     }
     if (x < -5 || x > 3) {
-      alert("X must be in [-5, 3]");
+      toast.error("X must be in [-5, 3]");
       return;
     }
     if (y <= -5 || y >= 3) {
-      alert("Y must be in (-5, 3)");
+      toast.error("Y must be in (-5, 3)");
       return;
     }
 
@@ -146,7 +147,15 @@ const Graph = () => {
   };
 
   return (
-    <canvas ref={canvasRef} width={300} height={300} onClick={checkDotMouse} />
+    <>
+      <canvas
+        ref={canvasRef}
+        width={300}
+        height={300}
+        onClick={checkDotMouse}
+      />
+      <Toaster richColors />
+    </>
   );
 };
 
