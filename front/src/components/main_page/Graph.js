@@ -118,8 +118,6 @@ const Graph = (size) => {
     };
   }, [r, dotsList]);
 
-  useEffect(() => {}, [dotsList]);
-
   const checkDotMouse = (event) => {
     const canvas = event.target;
     const rect = canvas.getBoundingClientRect();

@@ -54,6 +54,7 @@ const Form = () => {
         <div className="card col-md-6 offset-md-3 offset-md-3">
           <br />
           <h2 className="text-center">Sign in or Log in</h2>
+
           <div className="card=body">
             <form>
               <div className="form-group ">
@@ -69,6 +70,7 @@ const Form = () => {
                   onChange={handleLogin}
                 />
               </div>
+
               <div className="form-group">
                 <label className="form-label" htmlFor="password">
                   Password
@@ -82,7 +84,6 @@ const Form = () => {
                   onChange={handlePassword}
                 />
               </div>
-
               <br />
 
               <div className="d-flex">
@@ -102,7 +103,6 @@ const Form = () => {
                   Log in
                 </button>
               </div>
-
               <br />
             </form>
           </div>
