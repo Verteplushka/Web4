@@ -7,9 +7,19 @@ import { useDispatch } from "react-redux";
 const Form = () => {
   const dispatch = useDispatch();
 
-  const [x, setX] = useState(0);
-  const [y, setY] = useState(0);
-  const [r, setR] = useState(0);
+  const [x, setX] = useState(() =>
+    localStorage.getItem("x") ? parseInt(localStorage.getItem("x")) : 0
+  );
+  const [y, setY] = useState(() =>
+    localStorage.getItem("y") ? parseFloat(localStorage.getItem("y")) : 0
+  );
+  const [r, setR] = useState(() => {
+    const r = localStorage.getItem("r")
+      ? parseInt(localStorage.getItem("r"))
+      : 0;
+    dispatch(changeR(r));
+    return r;
+  });
 
   const globalSetR = (r) => {
     setR(r);
@@ -18,10 +28,17 @@ const Form = () => {
     } else {
       dispatch(changeR(0));
     }
+    localStorage.setItem("r", r);
   };
 
   const handleInputY = (event) => {
     setY(event.target.value);
+    localStorage.setItem("y", event.target.value);
+  };
+
+  const handleInputX = (x) => {
+    setX(x);
+    localStorage.setItem("x", x);
   };
 
   const clearList = () => {
@@ -58,63 +75,63 @@ const Form = () => {
         <IconButton
           size="small"
           color={x === -5 ? "warning" : "primary"}
-          onClick={() => setX(-5)}
+          onClick={() => handleInputX(-5)}
         >
           -5
         </IconButton>
         <IconButton
           size="small"
           color={x === -4 ? "warning" : "primary"}
-          onClick={() => setX(-4)}
+          onClick={() => handleInputX(-4)}
         >
           -4
         </IconButton>
         <IconButton
           size="small"
           color={x === -3 ? "warning" : "primary"}
-          onClick={() => setX(-3)}
+          onClick={() => handleInputX(-3)}
         >
           -3
         </IconButton>
         <IconButton
           size="small"
           color={x === -2 ? "warning" : "primary"}
-          onClick={() => setX(-2)}
+          onClick={() => handleInputX(-2)}
         >
           -2
         </IconButton>
         <IconButton
           size="small"
           color={x === -1 ? "warning" : "primary"}
-          onClick={() => setX(-1)}
+          onClick={() => handleInputX(-1)}
         >
           -1
         </IconButton>
         <IconButton
           size="small"
           color={x === 0 ? "warning" : "primary"}
-          onClick={() => setX(0)}
+          onClick={() => handleInputX(0)}
         >
           0
         </IconButton>
         <IconButton
           size="small"
           color={x === 1 ? "warning" : "primary"}
-          onClick={() => setX(1)}
+          onClick={() => handleInputX(1)}
         >
           1
         </IconButton>
         <IconButton
           size="small"
           color={x === 2 ? "warning" : "primary"}
-          onClick={() => setX(2)}
+          onClick={() => handleInputX(2)}
         >
           2
         </IconButton>
         <IconButton
           size="small"
           color={x === 3 ? "warning" : "primary"}
-          onClick={() => setX(3)}
+          onClick={() => handleInputX(3)}
         >
           3
         </IconButton>

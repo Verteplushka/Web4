@@ -15,8 +15,6 @@ const Graph = () => {
 
     const unitLenght = (canvas.height - 60) / 10;
 
-    let scaledR = r * unitLenght;
-
     // Рисование оси X с стрелкой на конце
     ctx.beginPath();
     ctx.moveTo(20, canvas.height / 2);
@@ -63,42 +61,45 @@ const Graph = () => {
     ctx.fillStyle = "black";
     ctx.fillText("X", canvas.width - 10, canvas.height / 2 - 10);
     ctx.fillText("Y", canvas.width / 2 + 10, 10);
-    ctx.fillText("R", canvas.width / 2 + 3 + scaledR, canvas.height / 2 + 20);
 
-    ctx.fillStyle = "rgba(20, 60, 200, 0.5)"; // Голубой с прозрачностью 0.5
-
-    // Прямоуголник
-    ctx.fillRect(
-      canvas.width / 2 - scaledR / 2,
-      canvas.height / 2,
-      scaledR / 2,
-      scaledR
-    );
-
-    //Треугольник
-    ctx.beginPath();
-    ctx.moveTo(canvas.width / 2, canvas.height / 2);
-    ctx.lineTo(canvas.width / 2 + scaledR / 2, canvas.height / 2);
-    ctx.lineTo(canvas.width / 2, canvas.height / 2 - scaledR / 2);
-    ctx.lineTo(canvas.width / 2, canvas.height / 2);
-    ctx.closePath();
-    ctx.fill();
-
-    //Сегмент круга
-    ctx.beginPath();
-    ctx.arc(
-      canvas.width / 2,
-      canvas.height / 2,
-      scaledR,
-      Math.PI,
-      (3 * Math.PI) / 2
-    );
-    ctx.lineTo(canvas.width / 2, canvas.height / 2); // Соединить с центром для закрытия фигуры
-    ctx.closePath(); // Завершить четверть круга
-    ctx.fill();
-
-    //Точки 0_0
     if (r > 0) {
+      let scaledR = r * unitLenght;
+
+      ctx.fillText("R", canvas.width / 2 + 3 + scaledR, canvas.height / 2 + 20);
+
+      ctx.fillStyle = "rgba(20, 60, 200, 0.5)"; // Голубой с прозрачностью 0.5
+
+      // Прямоуголник
+      ctx.fillRect(
+        canvas.width / 2 - scaledR / 2,
+        canvas.height / 2,
+        scaledR / 2,
+        scaledR
+      );
+
+      //Треугольник
+      ctx.beginPath();
+      ctx.moveTo(canvas.width / 2, canvas.height / 2);
+      ctx.lineTo(canvas.width / 2 + scaledR / 2, canvas.height / 2);
+      ctx.lineTo(canvas.width / 2, canvas.height / 2 - scaledR / 2);
+      ctx.lineTo(canvas.width / 2, canvas.height / 2);
+      ctx.closePath();
+      ctx.fill();
+
+      //Сегмент круга
+      ctx.beginPath();
+      ctx.arc(
+        canvas.width / 2,
+        canvas.height / 2,
+        scaledR,
+        Math.PI,
+        (3 * Math.PI) / 2
+      );
+      ctx.lineTo(canvas.width / 2, canvas.height / 2); // Соединить с центром для закрытия фигуры
+      ctx.closePath(); // Завершить четверть круга
+      ctx.fill();
+
+      // Точки 0_0
       dotsList.forEach((dot) => {
         ctx.fillStyle = dot.result === "hit" ? "green" : "red";
         ctx.fillRect(
