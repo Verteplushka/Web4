@@ -4,7 +4,7 @@ import { addDot } from "../../service/DotService";
 import { addDotRedux } from "../../redux_files/actions";
 import { Toaster, toast } from "sonner";
 
-const Graph = () => {
+const Graph = (size) => {
   const dispatch = useDispatch();
   const canvasRef = useRef(null);
   const r = useSelector((state) => state.r);

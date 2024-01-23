@@ -21,24 +21,41 @@ const MainPage = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="main-container">
+      <br /> <br />
       <div className="container">
-        <Form />
-      </div>
+        <div className="row justify-content-center">
+          <div className="col-md-4">
+            <div className="card">
+              <div className="card-body">
+                <Form />
+              </div>
+            </div>
+          </div>
 
-      <div className="container">
-        <Graph />
-      </div>
+          <div className="col-md-4">
+            <div className="card">
+              <div className="card-body">
+                <Graph />
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
 
-      <div className="container">
-        <Table dotsList={dotsList} />
+        <div className="row justify-content-center">
+          <div className="col-md-8">
+            <div className="card">
+              <div className="card-body">
+                <div className="table-responsive">
+                  <Table dotsList={dotsList} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="container">
-        <a href="/login_page" className="btn btn-primary">
-          Sign out
-        </a>
-      </div>
-    </>
+    </div>
   );
 };
 

@@ -219,14 +219,32 @@ const Form = () => {
           </IconButton>
         </div>
 
+        <br />
+
         <div className="form-group">
-          <button type="button" className="btn btn-primary" onClick={check}>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={check}
+            style={{ marginRight: "8px" }}
+          >
             Check
           </button>
           <button type="button" className="btn btn-primary" onClick={clearList}>
             Clear
           </button>
         </div>
+        <br />
+
+        <a
+          href="/login_page"
+          className="btn btn-primary"
+          style={{ width: "137px" }}
+        >
+          Sign out
+        </a>
+        <br />
+        <br />
       </form>
       <Toaster richColors />
     </>
