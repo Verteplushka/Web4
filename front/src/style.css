@@ -18,7 +18,19 @@
   overflow: auto;
 }
 
-.container-fluid-nav div{
-    display: flex;
+.container-fluid-nav div {
+  display: flex;
   justify-content: space-around;
+}
+
+.btn-custom-default {
+  background-color:#DBCCDE;
+}
+
+.btn-custom-chosen {
+  background-color: #92a3f7;
+}
+
+.custom-input {
+  width: 300px;
 }

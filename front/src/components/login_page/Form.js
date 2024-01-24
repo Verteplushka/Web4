@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Input from "react-toolbox/lib/input";
+import { Button } from "react-toolbox/lib/button";
 import { addUser, checkUser } from "../../service/UserService";
 import { useNavigate } from "react-router-dom";
 import { Toaster, toast } from "sonner";
@@ -9,12 +11,12 @@ const Form = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (event) => {
-    setLogin(event.target.value);
+  const handleLogin = (value) => {
+    setLogin(value);
   };
 
-  const handlePassword = (event) => {
-    setPassword(event.target.value);
+  const handlePassword = (value) => {
+    setPassword(value);
   };
 
   const checkForm = () => {
@@ -65,19 +67,19 @@ const Form = () => {
           <br />
           <h2 className="text-center">Sign in or Log in</h2>
 
-          <div className="card=body">
+          <div className="card-body">
             <form>
               <div className="form-group ">
                 <label className="form-label" htmlFor="login">
                   Username
                 </label>
-                <input
+                <Input
                   type="text"
-                  className="form-control"
                   id="login"
                   placeholder="enter your login here"
                   value={login}
                   onChange={handleLogin}
+                  style={{ width: "100%" }}
                 />
               </div>
 
@@ -85,29 +87,31 @@ const Form = () => {
                 <label className="form-label" htmlFor="password">
                   Password
                 </label>
-                <input
+                <Input
                   type="password"
-                  className="form-control"
                   id="password"
                   placeholder="enter your password here"
                   value={password}
                   onChange={handlePassword}
+                  style={{ width: "100%" }}
                 />
               </div>
+
               <br />
 
               <div className="d-flex">
-                <button
-                  type="button"
+                <Button
                   className="btn btn-dark"
+                  label="Sign up"
                   onClick={singUp}
                   style={{ marginRight: "8px" }}
-                >
-                  Sign up
-                </button>
-                <button type="button" className="btn btn-dark" onClick={logIn}>
-                  Log in
-                </button>
+                />
+
+                <Button
+                  className="btn btn-dark"
+                  label="Log in"
+                  onClick={logIn}
+                />
               </div>
               <br />
             </form>

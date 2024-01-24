@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import IconButton from "@mui/material/IconButton";
+// import IconButton from "@mui/material/IconButton";
+import IconButton from "react-toolbox/lib/button";
 import { clear, addDot } from "../../service/DotService";
 import { addDotRedux, changeR, clearRedux } from "../../redux_files/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Toaster, toast } from "sonner";
+import Button from "react-toolbox/lib/button";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -77,64 +79,91 @@ const Form = () => {
           <div>X:</div>
           <IconButton
             size="small"
-            color={x === -5 ? "warning" : "primary"}
+            className={
+              x === -5 ? "btn btn-custom-chosen" : "btn btn-custom-default"
+            }
             onClick={() => handleInputX(-5)}
+            style={{ marginRight: "4px" }}
           >
             -5
           </IconButton>
           <IconButton
             size="small"
-            color={x === -4 ? "warning" : "primary"}
+            className={
+              x === -4 ? "btn btn-custom-chosen" : "btn btn-custom-default"
+            }
             onClick={() => handleInputX(-4)}
+            style={{ marginRight: "4px" }}
           >
             -4
           </IconButton>
           <IconButton
             size="small"
-            color={x === -3 ? "warning" : "primary"}
+            className={
+              x === -3 ? "btn btn-custom-chosen" : "btn btn-custom-default"
+            }
             onClick={() => handleInputX(-3)}
+            style={{ marginRight: "4px" }}
           >
             -3
           </IconButton>
           <IconButton
             size="small"
-            color={x === -2 ? "warning" : "primary"}
+            className={
+              x === -2 ? "btn btn-custom-chosen" : "btn btn-custom-default"
+            }
             onClick={() => handleInputX(-2)}
+            style={{ marginRight: "4px" }}
           >
             -2
           </IconButton>
           <IconButton
             size="small"
-            color={x === -1 ? "warning" : "primary"}
+            className={
+              x === -1 ? "btn btn-custom-chosen" : "btn btn-custom-default"
+            }
             onClick={() => handleInputX(-1)}
+            style={{ marginRight: "4px" }}
           >
             -1
           </IconButton>
           <IconButton
             size="small"
-            color={x === 0 ? "warning" : "primary"}
+            className={
+              x === 0 ? "btn btn-custom-chosen" : "btn btn-custom-default"
+            }
             onClick={() => handleInputX(0)}
+            style={{ marginRight: "4px" }}
           >
             0
           </IconButton>
           <IconButton
             size="small"
-            color={x === 1 ? "warning" : "primary"}
+            className={
+              x === 1 ? "btn btn-custom-chosen" : "btn btn-custom-default"
+            }
             onClick={() => handleInputX(1)}
+            style={{ marginRight: "4px" }}
           >
             1
           </IconButton>
           <IconButton
             size="small"
-            color={x === 2 ? "warning" : "primary"}
+            className={
+              x === 2 ? "btn btn-custom-chosen" : "btn btn-custom-default"
+            }
             onClick={() => handleInputX(2)}
+            style={{ marginRight: "4px" }}
           >
             2
           </IconButton>
           <IconButton
             size="small"
-            color={x === 3 ? "warning" : "primary"}
+            className={
+              x === 3 ? "btn btn-custom-chosen" : "btn btn-custom-default"
+            }
             onClick={() => handleInputX(3)}
+            style={{ marginRight: "4px" }}
           >
             3
           </IconButton>
@@ -157,64 +186,91 @@ const Form = () => {
           <div>R:</div>
           <IconButton
             size="small"
-            color={r === -5 ? "warning" : "primary"}
+            className={
+              r === -5 ? "btn btn-custom-chosen" : "btn btn-custom-default"
+            }
             onClick={() => globalSetR(-5)}
+            style={{ marginRight: "4px" }}
           >
             -5
           </IconButton>
           <IconButton
             size="small"
-            color={r === -4 ? "warning" : "primary"}
+            className={
+              r === -4 ? "btn btn-custom-chosen" : "btn btn-custom-default"
+            }
             onClick={() => globalSetR(-4)}
+            style={{ marginRight: "4px" }}
           >
             -4
           </IconButton>
           <IconButton
             size="small"
-            color={r === -3 ? "warning" : "primary"}
+            className={
+              r === -3 ? "btn btn-custom-chosen" : "btn btn-custom-default"
+            }
             onClick={() => globalSetR(-3)}
+            style={{ marginRight: "4px" }}
           >
             -3
           </IconButton>
           <IconButton
             size="small"
-            color={r === -2 ? "warning" : "primary"}
+            className={
+              r === -2 ? "btn btn-custom-chosen" : "btn btn-custom-default"
+            }
             onClick={() => globalSetR(-2)}
+            style={{ marginRight: "4px" }}
           >
             -2
           </IconButton>
           <IconButton
             size="small"
-            color={r === -1 ? "warning" : "primary"}
+            className={
+              r === -1 ? "btn btn-custom-chosen" : "btn btn-custom-default"
+            }
             onClick={() => globalSetR(-1)}
+            style={{ marginRight: "4px" }}
           >
             -1
           </IconButton>
           <IconButton
             size="small"
-            color={r === 0 ? "warning" : "primary"}
+            className={
+              r === 0 ? "btn btn-custom-chosen" : "btn btn-custom-default"
+            }
             onClick={() => globalSetR(0)}
+            style={{ marginRight: "4px" }}
           >
             0
           </IconButton>
           <IconButton
             size="small"
-            color={r === 1 ? "warning" : "primary"}
+            className={
+              r === 1 ? "btn btn-custom-chosen" : "btn btn-custom-default"
+            }
             onClick={() => globalSetR(1)}
+            style={{ marginRight: "4px" }}
           >
             1
           </IconButton>
           <IconButton
             size="small"
-            color={r === 2 ? "warning" : "primary"}
+            className={
+              r === 2 ? "btn btn-custom-chosen" : "btn btn-custom-default"
+            }
             onClick={() => globalSetR(2)}
+            style={{ marginRight: "4px" }}
           >
             2
           </IconButton>
           <IconButton
             size="small"
-            color={r === 3 ? "warning" : "primary"}
+            className={
+              r === 3 ? "btn btn-custom-chosen" : "btn btn-custom-default"
+            }
             onClick={() => globalSetR(3)}
+            style={{ marginRight: "4px" }}
           >
             3
           </IconButton>
@@ -223,17 +279,17 @@ const Form = () => {
         <br />
 
         <div className="form-group">
-          <button
+          <Button
             type="button"
             className="btn btn-primary"
             onClick={check}
             style={{ marginRight: "8px" }}
           >
             Check
-          </button>
-          <button type="button" className="btn btn-primary" onClick={clearList}>
+          </Button>
+          <Button type="button" className="btn btn-primary" onClick={clearList}>
             Clear
-          </button>
+          </Button>
         </div>
         <br />
 
