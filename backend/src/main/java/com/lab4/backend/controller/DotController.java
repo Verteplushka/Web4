@@ -1,6 +1,8 @@
 package com.lab4.backend.controller;
 
 import com.lab4.backend.dto.DotDto;
+import com.lab4.backend.dto.UserDto;
+import com.lab4.backend.dto.WrapperDto;
 import com.lab4.backend.service.DotService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,20 +18,20 @@ import java.util.List;
 public class DotController {
     private DotService dotService;
 
-    @PostMapping
-    public ResponseEntity<DotDto>  createDot(@RequestBody DotDto dotDto){
-        DotDto savedDot = dotService.createDot(dotDto);
+    @PostMapping("/createDot")
+    public ResponseEntity<DotDto> createDot(@RequestBody WrapperDto wrapperDto){
+        DotDto savedDot = dotService.createDot(wrapperDto.getUser(), wrapperDto.getDot());
         return new ResponseEntity<>(savedDot, HttpStatus.CREATED);
     }
 
-    @GetMapping
-    public ResponseEntity<List<DotDto>> getAllDots(){
-        List<DotDto> allDots = dotService.getAllDots();
+    @PostMapping(path = "/getAllDots")
+    public ResponseEntity<List<DotDto>> getAllDots(@RequestBody UserDto userDto){
+        List<DotDto> allDots = dotService.getAllDots(userDto);
         return ResponseEntity.ok(allDots);
     }
 
-    @DeleteMapping
-    public void deleteAllDots(){
-        dotService.deleteAllDots();
+    @PostMapping("/clear")
+    public void deleteAllDots(@RequestBody UserDto userDto){
+        dotService.deleteAllDots(userDto);
     }
 }

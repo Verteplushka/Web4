@@ -4,21 +4,34 @@ import { listDots } from "../../service/DotService";
 import Form from "./Form";
 import Graph from "./Graph";
 import { useSelector, useDispatch } from "react-redux";
-import { addDotRedux } from "../../redux_files/actions";
+import { addDotRedux, setUser } from "../../redux_files/actions";
 
 const MainPage = () => {
   const dotsList = useSelector((state) => state.dotsList);
+  const user = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    listDots()
-      .then((response) => {
-        response.data.forEach((dot) => dispatch(addDotRedux(dot)));
+    dispatch(
+      setUser({
+        login: localStorage.getItem("login"),
+        password: localStorage.getItem("password"),
       })
-      .catch((error) => {
-        console.log(error);
-      });
+    );
   }, [dispatch]);
+
+  useEffect(() => {
+    if (user) {
+      listDots(user)
+        .then((response) => {
+          response.data.forEach((dot) => dispatch(addDotRedux(dot)));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [user, dispatch]);
 
   return (
     <div className="main-container">

@@ -9,6 +9,7 @@ const Graph = (size) => {
   const canvasRef = useRef(null);
   const r = useSelector((state) => state.r);
   const dotsList = useSelector((state) => state.dotsList);
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -139,7 +140,7 @@ const Graph = (size) => {
       return;
     }
 
-    addDot({ x: x, y: y, r: r }).then((response) =>
+    addDot(user, { x: x, y: y, r: r }).then((response) =>
       dispatch(addDotRedux(response.data))
     );
   };

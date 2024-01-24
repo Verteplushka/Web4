@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import { clear, addDot } from "../../service/DotService";
 import { addDotRedux, changeR, clearRedux } from "../../redux_files/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Toaster, toast } from "sonner";
 
 const Form = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
 
   const [x, setX] = useState(() =>
     localStorage.getItem("x") ? parseInt(localStorage.getItem("x")) : 0
@@ -43,7 +44,7 @@ const Form = () => {
   };
 
   const clearList = () => {
-    clear().then(dispatch(clearRedux()));
+    clear(user).then(dispatch(clearRedux()));
   };
 
   const check = () => {
@@ -64,7 +65,7 @@ const Form = () => {
       return;
     }
 
-    addDot({ x: x, y: y, r: r }).then((response) => {
+    addDot(user, { x: x, y: y, r: r }).then((response) => {
       dispatch(addDotRedux(response.data));
     });
   };

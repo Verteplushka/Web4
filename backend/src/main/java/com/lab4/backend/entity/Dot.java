@@ -18,6 +18,7 @@ public class Dot{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    private long userId;
     private double x;
     private double y;
     private int r;

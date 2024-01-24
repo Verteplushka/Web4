@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class DotDto {
     private long id;
+    private long userId;
     private double x;
     private double y;
     private int r;

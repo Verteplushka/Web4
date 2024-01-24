@@ -1,4 +1,4 @@
-package com.lab4.backend.service;
+package com.lab4.backend.logic;
 
 import com.lab4.backend.entity.Dot;
 

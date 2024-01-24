@@ -7,6 +7,7 @@ public class DotMapper {
     public static DotDto mapToDotDto(Dot dot){
         return new DotDto(
                 dot.getId(),
+                dot.getUserId(),
                 dot.getX(),
                 dot.getY(),
                 dot.getR(),
@@ -19,6 +20,7 @@ public class DotMapper {
     public static Dot mapToDot(DotDto dotDto){
         return new Dot(
                 dotDto.getId(),
+                dotDto.getUserId(),
                 dotDto.getX(),
                 dotDto.getY(),
                 dotDto.getR(),

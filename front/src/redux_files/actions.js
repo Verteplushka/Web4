@@ -11,3 +11,8 @@ export const changeR = (r) => ({
   type: "CHANGE_R",
   payload: r,
 });
+
+export const setUser = (user) => ({
+  type: "SET_USER",
+  payload: user,
+});

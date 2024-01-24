@@ -1,6 +1,7 @@
 const initialState = {
   dotsList: [],
   r: 0,
+  user: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -19,6 +20,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         r: action.payload,
+      };
+    case "SET_USER":
+      return {
+        ...state,
+        user: action.payload,
       };
     default:
       return state;

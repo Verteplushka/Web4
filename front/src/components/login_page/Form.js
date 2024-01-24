@@ -31,20 +31,30 @@ const Form = () => {
 
   const singUp = () => {
     if (!checkForm()) return;
-    addUser({ login: login, password: password }).then((response) =>
-      response.data
-        ? navigator("/main_page")
-        : toast.error("User with login " + login + " already exists")
-    );
+    addUser({ login: login, password: password })
+      .then((response) =>
+        response.data
+          ? navigator("/main_page")
+          : toast.error("User with login " + login + " already exists")
+      )
+      .then(() => {
+        localStorage.setItem("login", login);
+        localStorage.setItem("password", password);
+      });
   };
 
   const logIn = () => {
     if (!checkForm()) return;
-    checkUser({ login: login, password: password }).then((response) =>
-      response.data
-        ? navigator("/main_page")
-        : toast.error("Wrong login or password")
-    );
+    checkUser({ login: login, password: password })
+      .then((response) =>
+        response.data
+          ? navigator("/main_page")
+          : toast.error("Wrong login or password")
+      )
+      .then(() => {
+        localStorage.setItem("login", login);
+        localStorage.setItem("password", password);
+      });
   };
 
   return (
