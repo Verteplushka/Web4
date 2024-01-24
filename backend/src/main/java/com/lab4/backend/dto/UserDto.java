@@ -11,12 +11,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserDto {
     private Long id;
-    private Boolean requestType;
     private String login;
     private String password;
-    public UserDto(Long id, String login, String password){
-        setId(id);
-        setLogin(login);
-        setPassword(password);
-    }
 }

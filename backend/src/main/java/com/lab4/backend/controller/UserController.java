@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private UserService userService;
 
-    @PostMapping
-    public ResponseEntity<Boolean> addUser(@RequestBody UserDto userDto){
-        //0 is for creating a new user
-        //1 is for log in
-        if(userDto.getRequestType()) {
-            Boolean checkedUser = userService.checkUser(userDto);
-            return new ResponseEntity<>(checkedUser, HttpStatus.ACCEPTED);
-        }
+    @PostMapping("/addUser")
+    public ResponseEntity<Boolean> addUser(@RequestBody UserDto userDto) {
         Boolean savedUser = userService.addUser(userDto);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/logIn")
+    public ResponseEntity<Boolean> logIn(@RequestBody UserDto userDto) {
+        Boolean checkedUser = userService.checkUser(userDto);
+        return new ResponseEntity<>(checkedUser, HttpStatus.ACCEPTED);
     }
 }
