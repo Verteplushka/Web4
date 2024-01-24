@@ -4,7 +4,7 @@ import { addDot } from "../../service/DotService";
 import { addDotRedux } from "../../redux_files/actions";
 import { Toaster, toast } from "sonner";
 
-const Graph = (size) => {
+const Graph = ({ size }) => {
   const dispatch = useDispatch();
   const canvasRef = useRef(null);
   const r = useSelector((state) => state.r);
@@ -149,8 +149,8 @@ const Graph = (size) => {
     <>
       <canvas
         ref={canvasRef}
-        width={300}
-        height={300}
+        width={size}
+        height={size}
         onClick={checkDotMouse}
       />
       <Toaster richColors />

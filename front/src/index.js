@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import App from "./App";
 import store from "./redux_files/store";
 import "./style.css";
+import "./media.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

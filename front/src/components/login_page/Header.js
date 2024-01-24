@@ -4,9 +4,11 @@ const Header = ({ name, group, variant }) => {
   return (
     <header>
       <nav className="navbar navbar-dark bg-dark">
-        <h1 className="container navbar-brand text-center">
-          {name}, {group}, Вариант №{variant}
-        </h1>
+        <div class="container text-center">
+          <h1 className="container navbar-brand">
+            {name}, {group}, Вариант №{variant}
+          </h1>
+        </div>
       </nav>
     </header>
   );

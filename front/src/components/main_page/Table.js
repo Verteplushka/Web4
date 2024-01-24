@@ -2,7 +2,7 @@ import React from "react";
 
 const Table = ({ dotsList }) => {
   return (
-    <div className="table-wrapper-scroll-y my-custom-scrollbar">
+    <div className="custom-scrollbar">
       <table className="table table-bordered table-sm">
         <thead>
           <tr>

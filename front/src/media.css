@@ -1,0 +1,64 @@
+
+@media (min-width: 1103px) {
+    .main-container {
+      height: 100vh;
+    }
+
+    .row {
+      margin: 0 auto;
+    }
+
+    .col {
+      max-width: 470px;
+    }
+
+    .col-table {
+      max-width: 940px;
+    }
+
+    .custom-scrollbar {
+      height: 30vh;
+    }
+}
+  
+@media (min-width: 800px) and (max-width: 1102px) {
+    .main-container {
+      height: 100vh;
+    }
+
+    .row {
+      margin: 0 auto;
+    }
+  
+    .col {
+      max-width: 470px;
+    }
+  
+    .col-table {
+      max-width: 940px;
+    }
+
+    .custom-scrollbar {
+      height: 25vh;
+    }
+}
+  
+@media (max-width: 799px) {
+    .row {
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+    }
+  
+    .col {
+      max-width: 470px;
+    }
+  
+    .col-table {
+      max-width: 470px;
+    }
+
+    .custom-scrollbar {
+      height: 300px;
+    }
+}

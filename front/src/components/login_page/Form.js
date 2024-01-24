@@ -35,7 +35,7 @@ const Form = () => {
       .then((response) =>
         response.data
           ? navigator("/main_page")
-          : toast.error("User with login " + login + " already exists")
+          : toast.error('User with login "' + login + '" already exists')
       )
       .then(() => {
         localStorage.setItem("login", login);
@@ -99,17 +99,13 @@ const Form = () => {
               <div className="d-flex">
                 <button
                   type="button"
-                  className="btn btn-primary"
+                  className="btn btn-dark"
                   onClick={singUp}
                   style={{ marginRight: "8px" }}
                 >
                   Sign up
                 </button>
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={logIn}
-                >
+                <button type="button" className="btn btn-dark" onClick={logIn}>
                   Log in
                 </button>
               </div>
