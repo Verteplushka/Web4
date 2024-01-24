@@ -60,7 +60,7 @@ public class DotServiceImpl implements DotService {
 
     private User findAndCheckuser(UserDto userDto) {
         User user = UserMapper.mapToUser(userDto);
-        if(!UserValidator.isValid(user)) return null;   
+        if(!UserValidator.isValid(user)) return null;
         User foundUser = userRepository.findByLogin(user.getLogin()).orElse(null);
         if (foundUser == null) return null;
         if (passwordEncoder.matches(user.getPassword(), (foundUser.getPassword()))){
