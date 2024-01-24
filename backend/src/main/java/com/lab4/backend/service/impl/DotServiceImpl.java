@@ -4,6 +4,8 @@ import com.lab4.backend.dto.DotDto;
 import com.lab4.backend.dto.UserDto;
 import com.lab4.backend.entity.Dot;
 import com.lab4.backend.entity.User;
+import com.lab4.backend.logic.DotValidator;
+import com.lab4.backend.logic.UserValidator;
 import com.lab4.backend.mapper.DotMapper;
 import com.lab4.backend.mapper.UserMapper;
 import com.lab4.backend.repository.DotRepository;
@@ -32,6 +34,7 @@ public class DotServiceImpl implements DotService {
         if(user == null) return null;
 
         Dot dot = DotMapper.mapToDot(dotDto);
+        if(!DotValidator.isValid(dot)) return null;
         Dot checkedDot = DotChecker.checkDot(dot);
 
         checkedDot.setUserId(user.getId());
@@ -57,6 +60,7 @@ public class DotServiceImpl implements DotService {
 
     private User findAndCheckuser(UserDto userDto) {
         User user = UserMapper.mapToUser(userDto);
+        if(!UserValidator.isValid(user)) return null;   
         User foundUser = userRepository.findByLogin(user.getLogin()).orElse(null);
         if (foundUser == null) return null;
         if (passwordEncoder.matches(user.getPassword(), (foundUser.getPassword()))){

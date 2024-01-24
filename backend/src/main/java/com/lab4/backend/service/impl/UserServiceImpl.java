@@ -2,6 +2,7 @@ package com.lab4.backend.service.impl;
 
 import com.lab4.backend.dto.UserDto;
 import com.lab4.backend.entity.User;
+import com.lab4.backend.logic.UserValidator;
 import com.lab4.backend.mapper.UserMapper;
 import com.lab4.backend.repository.UserRepository;
 import com.lab4.backend.service.UserService;
@@ -17,6 +18,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean checkUser(UserDto userDto) {
         User user = UserMapper.mapToUser(userDto);
+        if(!UserValidator.isValid(user)) return false;
         User userFromTable = userRepository.findByLogin(user.getLogin()).orElse(null);
         if(userFromTable == null){
             return false;
