@@ -13,9 +13,13 @@
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.21.2",
     "react-scripts": "^5.0.1",
+    "react-toolbox": "^2.0.0-beta.13",
     "redux": "^5.0.1",
     "sonner": "^1.3.1",
     "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^4.3.5"
   },
   "scripts": {
     "start": "react-scripts start",
