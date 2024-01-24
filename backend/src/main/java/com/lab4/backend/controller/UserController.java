@@ -20,8 +20,8 @@ public class UserController {
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 
-    @PostMapping("/logIn")
-    public ResponseEntity<Boolean> logIn(@RequestBody UserDto userDto) {
+    @PostMapping("/checkUser")
+    public ResponseEntity<Boolean> checkUser(@RequestBody UserDto userDto) {
         Boolean checkedUser = userService.checkUser(userDto);
         return new ResponseEntity<>(checkedUser, HttpStatus.ACCEPTED);
     }
